@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+    body {
+        font-family: 'MedievalSharp', cursive;
+        color: #969696;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #FF0000;
+        text-transform: uppercase;
+    }
+
+    .controls {
+        margin-bottom: 20px;
+    }
+
+    .input-field {
+        background-color: #333;
+        border: 1px solid #555;
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 200px;
+    }
+
+    .load-button {
+        background-color: #222;
+        color: #FFF;
+        border: 2px solid #555;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+
+    .load-button:hover {
+        background-color: #4CAF50;
+        border-color: #4CAF50;
+    }
+
+    #componentContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    iframe {
+        margin: 10px;
+        width: 550px;
+        height: 300px;
+        border: 2px solid #444;
+        border-radius: 10px;
+        background: #000000e3;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    </style>
+    
+</head>
+<body onload="mudarBackground()">
+    <h1>Criador de dados</h1>
+    <div class="controls">
+        <input id="nValue" type="number" class="input-field" placeholder="Número de dados" min="1">
+        <button id="loadButton" class="load-button">Informe o número de dados</button>
+    </div>
+    <div id="componentContainer"></div>
+    <script>
+        document.getElementById('loadButton').addEventListener('click', function() {
+            const nValue = parseInt(document.getElementById('nValue').value);
+            if (isNaN(nValue) || nValue < 1) {
+                alert("Por favor, insira uma quantidade valida de dados.");
+                return;
+            }
+
+            const componentContainer = document.getElementById('componentContainer');
+            componentContainer.innerHTML = '';
+
+            for (let i = 0; i < nValue; i++) {
+                const iframe = document.createElement('iframe');
+                iframe.src = 'dado.html';
+                componentContainer.appendChild(iframe);
+
+                iframe.onload = function() {
+                    iframe.contentWindow.postMessage({ n: nValue }, '*');
+                };
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de RPG Customizável</title>
+    <link rel="stylesheet" href="../css/estiloFicha.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:," />
+</head>
+<script src="../js/mudarBackground.js"></script>
+<script src="../js/salvamento.js"></script>
+<script src="../js/bonusDado.js"></script>
+<script src="../js/"></script>
+<body onload="mudarBackground()">
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <h1 id="titulo">FICHA CUSTOMIZÁVEL</h1>
+        </div>
+        <form>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="nomeJogador" class="form-label">Nome do Jogador</label>
+                    <input type="text" id="nomeJogador" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="nome" class="form-label">Nome do Personagem</label>
+                    <input type="text" id="nome" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="nivel" class="form-label">Nível</label>
+                    <input type="number" id="nivel" class="form-control" value="1" min="1" max="20">
+                </div>
+                <div class="col-md-4">
+                    <label for="classe" class="form-label" id="class">Classe</label>
+                    <select id="classe" class="form-select">
+                        <option>Custom</option>
+                        <option value="Barbaro">Barbaro</option>
+                        <option value="Bardo">Bardo</option>
+                        <option value="Bruxo">Bruxo</option>
+                        <option value="Clerigo">Clérigo</option>
+                        <option value="Druida">Druida</option>
+                        <option value="Guerreiro">Guerreiro</option>
+                        <option value="Ladino">Ladino</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Monge">Monge</option>
+                        <option value="Paladino">Paladino</option>
+                        <option>Patrulheiro</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="antecedentes" class="form-label" id="antecedentes">Antecedentes</label>
+                    <select id="antecedentes" class="form-select">
+                        <option>Custom</option>
+                        <option>Acolito</option>
+                        <option>Artesao de Guilda</option>
+                        <option>Artista</option>
+                        <option>Charlatao</option>
+                        <option>Criminoso</option>
+                        <option>Eremita</option>
+                        <option>Forasteiro</option>
+                        <option>Heroi do Povo</option>
+                        <option>Marinheiro</option>
+                        <option>Nobre</option>
+                        <option>Orfao</option>
+                        <option>Sabio</option>
+                        <option>Soldado</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="raca" class="form-label" id="raca">Raça</label>
+                    <select id="raca" class="form-select">
+                        <option>Custom</option>
+                        <option value="Anao">Anão</option>
+                        <option value="Elfo">Elfo</option>
+                        <option value="Halfling">Halfling</option>
+                        <option value="Humano">Humano</option>
+                        <option value="Draconato">Draconato</option>
+                        <option value="Gnomo">Gnomo</option>
+                        <option value="Meio-Elfo">Meio-Elfo</option>
+                        <option value="Meio-Orc">Meio-Orc</option>
+                        <option value="Tiefling">Tiefling</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="tendencia" class="form-label">Tendência</label>
+                    <select id="tendencia" class="form-select">
+                        <option>Custom</option>
+                        <option>Leal e Bom</option>
+                        <option>Neutro e Bom</option>
+                        <option>Caotico e Bom</option>
+                        <option>Leal e Neutro</option>
+                        <option>Neutro</option>
+                        <option>Caotico e Neutro</option>
+                        <option>Leal e Mau</option>
+                        <option>Neutro e Mau</option>
+                        <option>Caotico e Mau</option>
+                    </select>
+                    
+                </div>
+                <div class="col-md-6">
+                    <label for="subraca">Sub-Raça:</label>
+                    <select id="subraca" class="form-select">
+                        <option>Custom</option>
+                        <option>Anao da Colina</option>
+                        <option>Anao da Montanha</option>
+                        <option>Alto Elfo</option>
+                        <option>Elfo da Floresta</option>
+                        <option>Elfo Negro (Drow)</option>
+                        <option>Gnomo da Floresta</option>
+                        <option>Gnomo das Rochas</option>
+                        <option>Pés leves</option>
+                        <option>Robusto</option>
+                    </select>
+                </div>
+            <div class="atributos-container mt-5">
+    <div class="atributo-card">
+        <label for="bonus-forca">Bônus de Dado</label>
+        <input type="number" id="bonus-forca" min="-1" max="5" value="0">
+        <h3>Força</h3>
+        <label for="forca">Valor</label>
+        <input type="number" id="forca" min="1" max="20" value="0"><br><br>
+        <p><input type="checkbox" id="resistencia-forca" class="resistencia-checkbox"> Teste de Resistência</p>
+        <div class="atributo-extra">
+            <input type="checkbox" id="pericia-atletismo" class="circular-checkbox"> Atletismo
+        </div>
+    </div>
+
+    <div class="atributo-card">
+        <label for="bonus-destreza">Bônus de Dado</label>
+        <input type="number" id="bonus-destreza" min="-1" max="5" value="0">
+        <h3>Destreza</h3>
+        <label for="destreza">Valor</label>
+        <input type="number" id="destreza" min="1" max="20" value="0"><br><br>
+        <p><input type="checkbox" id="resistencia-destreza" class="resistencia-checkbox"> Teste de Resistência</p>
+        <div class="atributo-extra">
+            <input type="checkbox" id="pericia-acrobacia" class="circular-checkbox"> Acrobacia<br>
+            <input type="checkbox" id="pericia-furtividade" class="circular-checkbox"> Furtividade<br>
+            <input type="checkbox" id="pericia-prestidigitacao" class="circular-checkbox"> Prestidigitação
+        </div>
+    </div>
+
+    <div class="atributo-card">
+        <label for="bonus-inteligencia">Bônus de Dado</label>
+        <input type="number" id="bonus-inteligencia" min="-1" max="5" value="0">
+        <h3>Inteligência</h3>
+        <label for="inteligencia">Valor</label>
+        <input type="number" id="inteligencia" min="1" max="20" value="0"><br><br>
+        <p><input type="checkbox" id="resistencia-inteligencia" class="resistencia-checkbox"> Teste de Resistência</p>
+        <div class="atributo-extra">
+            <input type="checkbox" id="pericia-arcanismo" class="circular-checkbox"> Arcanismo<br>
+            <input type="checkbox" id="pericia-historia" class="circular-checkbox"> História<br>
+            <input type="checkbox" id="pericia-investigacao" class="circular-checkbox"> Investigação<br>
+            <input type="checkbox" id="pericia-natureza" class="circular-checkbox"> Natureza<br>
+            <input type="checkbox" id="pericia-religiao" class="circular-checkbox"> Religião
+        </div>
+    </div>
+
+    <div class="atributo-card">
+        <label for="bonus-sabedoria">Bônus de Dado</label>
+        <input type="number" id="bonus-sabedoria" min="-1" max="5" value="0">
+        <h3>Sabedoria</h3>
+        <label for="sabedoria">Valor</label>
+        <input type="number" id="sabedoria" min="1" max="20" value="0"><br><br>
+        <p><input type="checkbox" id="resistencia-sabedoria" class="resistencia-checkbox"> Teste de Resistência</p>
+        <div class="atributo-extra">
+            <input type="checkbox" id="pericia-adestrar-animais" class="circular-checkbox"> Adestrar Animais<br>
+            <input type="checkbox" id="pericia-intuicao" class="circular-checkbox"> Intuição<br>
+            <input type="checkbox" id="pericia-medicina" class="circular-checkbox"> Medicina<br>
+            <input type="checkbox" id="pericia-percepcao" class="circular-checkbox"> Percepção<br>
+            <input type="checkbox" id="pericia-sobrevivencia" class="circular-checkbox"> Sobrevivência<br>
+        </div>
+    </div>
+
+    <div class="atributo-card">
+        <label for="bonus-carisma">Bônus de Dado</label>
+        <input type="number" id="bonus-carisma" min="-1" max="5" value="0">
+        <h3>Carisma</h3>
+        <label for="carisma">Valor</label>
+        <input type="number" id="carisma" min="1" max="20" value="0"><br><br>
+        <p><input type="checkbox" id="resistencia-carisma" class="resistencia-checkbox"> Teste de Resistência</p>
+        <div class="atributo-extra">
+            <input type="checkbox" id="pericia-atuacao" class="circular-checkbox"> Atuação<br>
+            <input type="checkbox" id="pericia-enganacao" class="circular-checkbox"> Enganação<br>
+            <input type="checkbox" id="pericia-intimidacao" class="circular-checkbox"> Intimidação<br>
+            <input type="checkbox" id="pericia-persuasao" class="circular-checkbox"> Persuasão
+            </div>
+        </div>
+    </div>
+
+            <div class="ficha-container">
+                <div class="ficha-esquerda">
+                    <div class="info-geral">
+                        <div class="escudo">
+                            <h3>Armadura(C.A)</h3>
+                            <input type="number" id="armadura" min="1" max="50" value="0">
+                        </div>
+                        <div class="iniciativa">
+                            <h3>Iniciativa</h3>
+                            <input type="number" id="iniciativa"  min="-5" max="10" value="0">
+                        </div>
+                        <div class="deslocamento">
+                            <h3>Deslocamento</h3>
+                            <input type="number" id="deslocamento" min="1" max="100" value="0">
+                        </div>
+                    </div>
+                    <div class="pontos-vida">
+                        <label for="pv-maximo">Pontos de Vida Máximo</label>
+                        <input type="number" id="pv-maximo" value="0">
+                        <label for="pv-atual">Pontos de Vida Atual</label>
+                        <input type="number" id="pv-atual" value="0">
+                        <label for="pv-temporario">Pontos de Vida Temporários</label>
+                        <input type="number" id="pv-temporario" value="0">
+                    </div>
+                    <div class="testes-morte">
+                        <h3>Testes Contra a Morte</h3>
+                        <div class="testes">
+                            <div>
+                                <label>Sucessos</label>
+                                <div class="check-group">
+                                    <input type="checkbox" class="sucesso" id="teste-morte-sucesso-1">
+                                    <input type="checkbox" class="sucesso" id="teste-morte-sucesso-2">
+                                    <input type="checkbox" class="sucesso" id="teste-morte-sucesso-3">
+                                </div>
+                            </div>
+                            <div>
+                                <label>Falhas</label>
+                                <div class="check-group">
+                                    <input type="checkbox" class="falha" id="teste-morte-falha-1">
+                                    <input type="checkbox" class="falha" id="teste-morte-falha-2">
+                                    <input type="checkbox" class="falha" id="teste-morte-falha-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ficha-direita">
+                    <div class="personalidade">
+                        <h4>Traços de Personalidade</h4>
+                        <textarea rows="3" id="personalidade"></textarea>
+                    </div><br>
+                    <div class="ideais">
+                        <h4>Ideais</h4>
+                        <textarea rows="3" id="ideais"></textarea>
+                    </div><br>
+                    <div class="vinculos">
+                        <h4>Vínculos</h4>
+                        <textarea rows="3" id="vinculos"></textarea>
+                    </div><br>
+                    <div class="fraquezas">
+                        <h4>Fraquezas</h4>
+                        <textarea rows="3" id="frqu"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 section">
+                    <h3>Ataques & Magias</h3>
+                    <table class="table-table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Bônus</th>
+                                <th>Dano/Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr>
+                            <tr><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr>
+                            <tr><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr>
+                        </tbody>
+                    </table>
+
+
+                </div><br>
+                <div class="col-md-6 section">
+                    <h3>Características e Traços</h3>
+                    <textarea class="form-textarea" rows="8"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 section">
+                    <h3>Equipamento</h3>
+                    <textarea class="form-textarea" rows="5" id="equipamento"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6 section">
+                <h3>Outros idiomas e proeficiencias</h3>
+                <textarea class="form-textarea" rows="5" id="proeficiencias"></textarea>
+            </div>
+            
+        </form>
+    </div>
+    
+</body>
+</html>

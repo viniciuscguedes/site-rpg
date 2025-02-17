@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+
+        .numero {
+            position: absolute;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            transform: translate(-50%, -50%);
+        }
+
+        .controls-wrapper {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            width: 300px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .input-field {
+            background-color: #333;
+            border: 1px solid #555;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .random-button {
+            background-color: #222;
+            color: #FFF;
+            border: 2px solid #555;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+        .random-button:hover{
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="imagem" src="dado.svg" alt="Imagem SVG">
+        <div id="numero" class="numero"></div>
+    </div>
+
+    <div class="controls-wrapper">
+        <div class="controls">
+            <input id="tamValue" type="number" class="input-field" placeholder="Digite o valor maximo" min="1">
+            <button id="randomButton" class="random-button">Random</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const imagem = document.getElementById('imagem');
+            const numero = document.getElementById('numero');
+            const tamValueInput = document.getElementById('tamValue');
+            const randomButton = document.getElementById('randomButton');
+
+            imagem.onload = function() {
+                const largura = imagem.width;
+                const altura = imagem.height;
+                const centroX = largura / 2;
+                const centroY = altura / 2;
+                numero.style.left = centroX + 'px';
+                numero.style.top = centroY + 'px';
+            };
+
+            randomButton.addEventListener('click', function() {
+                const tamValue = parseInt(tamValueInput.value);
+                if (isNaN(tamValue) || tamValue < 1) {
+                    alert("Por favor, insira um valor válido (maior que 0).");
+                    return;
+                }
+
+                let count = 0;
+                const totalNumbers = 10;
+
+                function generateRandomNumber() {
+                    if (count < totalNumbers) {
+                        const randomNumber = Math.floor(Math.random() * tamValue) + 1;
+                        numero.textContent = randomNumber;
+                        const largura = imagem.width;
+                        const altura = imagem.height;
+                        const centroX = largura / 2;
+                        const centroY = altura / 2;
+                        numero.style.left = centroX + 'px';
+                        numero.style.top = centroY + 'px';
+                        count++;
+                        setTimeout(generateRandomNumber, 200);
+                    }
+                }
+
+                generateRandomNumber();
+            });
+        };
+    </script>
+</body>
+</html>
